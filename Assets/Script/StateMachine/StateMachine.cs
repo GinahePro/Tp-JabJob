@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Assets.Script.BaseStateMachine
+namespace BaseStateMachine
 {
     public class StateMachine 
     {

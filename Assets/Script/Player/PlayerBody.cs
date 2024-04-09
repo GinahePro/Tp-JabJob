@@ -1,18 +1,24 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using BaseStateMachine;
 
-public class PlayerBody : MonoBehaviour
+namespace Player
 {
-    // Start is called before the first frame update
-    void Start()
+    public class PlayerBody : MonoBehaviour
     {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        [SerializeField] Transform cameraVerticalRotationPoint;
+        StateMachine stateMachine;
+
+        public void Start()
+        {
+            PlayerContext context = new PlayerContext(this.transform,cameraVerticalRotationPoint,GetComponent<Rigidbody>());
+            PlayerState_Base baseState = new PlayerState_Base(context);
+            stateMachine = new StateMachine(baseState);
+        }
+
+        public void Update()
+        {
+            stateMachine.CustomUpdate();
+        }
     }
 }
