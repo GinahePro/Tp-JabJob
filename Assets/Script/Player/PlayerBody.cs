@@ -1,5 +1,5 @@
 using UnityEngine;
-using BaseStateMachine;
+using DesignPattern.BaseStateMachine;
 
 namespace Player
 {

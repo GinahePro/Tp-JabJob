@@ -1,5 +1,4 @@
-﻿
-namespace Player
+﻿namespace Player
 {
     public class PlayerState_InAir : PlayerState_Base
     {
