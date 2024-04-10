@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using DesignPattern.BaseStateMachine;
-using Settings;
+using GameConst;
 using UnityEngine.Events;
 
 namespace Player
@@ -8,7 +8,7 @@ namespace Player
     public class PlayerContext : StateContext
     {
         public PlayerController controller;
-        public PlayerBodySettings playerBodysettings;
+        public PlayerBodyConst playerBodyConst;
         public Transform playerTransform;
         public Transform cameraVerticalRotationPoint;
         public Rigidbody rb;

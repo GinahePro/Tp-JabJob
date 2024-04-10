@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using CustomException;
 
-namespace Settings
+namespace GameConst
 {
     /// <summary>
     /// Singleton class to make accessible all the settings easly. Each scene MUST have a UNIQUE SettingsManager.

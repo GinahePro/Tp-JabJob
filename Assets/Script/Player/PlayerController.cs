@@ -1,11 +1,8 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Events;
-using Settings;
+using GameConst;
 using DesignPattern.Singleton;
-using System.Linq;
-using Unity.Plastic.Newtonsoft.Json.Bson;
-using Unity.VisualScripting.YamlDotNet.Core.Tokens;
 
 namespace Player
 {
@@ -13,7 +10,7 @@ namespace Player
     public class PlayerController : Singleton<PlayerController>
     {
         [SerializeField]
-        ControllerSettings controlerSettings;
+        PlayerControllerConst controlerSettings;
 
         string currentControlScheme;
 
@@ -47,8 +44,6 @@ namespace Player
             {
                 WantedLookMovement = Vector2.zero;
             }
-            WantedLookMovement.x *= controlerSettings.horizontalCameraSensitivity;
-            WantedLookMovement.y *= controlerSettings.verticalCameraSensitivity;
         }
         void OnMainInteraction(InputValue value)
         {

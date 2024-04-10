@@ -13,7 +13,7 @@
 
         public override void OnEnter()
         {
-            _context.rb.drag = _context.playerBodysettings.airDrag;
+            _context.rb.drag = _context.playerBodyConst.AirDrag;
         }
 
         public override void OnLeave()

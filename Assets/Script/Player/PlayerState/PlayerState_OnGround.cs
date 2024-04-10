@@ -13,7 +13,7 @@
 
         public override void OnEnter()
         {
-            _context.rb.drag = _context.playerBodysettings.groundDrag;
+            _context.rb.drag = _context.playerBodyConst.GroundDrag;
             _context.controller.Jump.AddListener(Jump);
         }
 
