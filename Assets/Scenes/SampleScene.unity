@@ -472,7 +472,9 @@ GameObject:
   - component: {fileID: 894210553}
   - component: {fileID: 894210552}
   - component: {fileID: 894210557}
-  - component: {fileID: 894210556}
+  - component: {fileID: 894210560}
+  - component: {fileID: 894210559}
+  - component: {fileID: 894210558}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -569,19 +571,6 @@ Transform:
   - {fileID: 1992587136}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &894210556
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 894210551}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 05082d999d31c00408f9c05c2ae1a90e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cameraVerticalRotationPoint: {fileID: 1992587136}
 --- !u!54 &894210557
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -607,8 +596,86 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 94
   m_CollisionDetection: 0
+--- !u!114 &894210558
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 894210551}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05082d999d31c00408f9c05c2ae1a90e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cameraVerticalRotationPoint: {fileID: 1992587136}
+--- !u!114 &894210559
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 894210551}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7ca00e9b9c24b647a9e3a1ef9a4df5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  controlerSettings: {fileID: 11400000, guid: 9073358086e01e54f9e6bf7bbf96eaef, type: 2}
+  WantedMovement: {x: 0, y: 0}
+  WantedLookMovement: {x: 0, y: 0}
+  Jump:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &894210560
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 894210551}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Actions: {fileID: -944628639613478452, guid: 2f1a76a88f5501343bdaa6d005b8dede,
+    type: 3}
+  m_NotificationBehavior: 0
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents:
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 54804df5-e354-45b8-bf3c-8702155384c8
+    m_ActionName: BaseMap/Movement[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 375f2adf-9d0b-4382-b38d-7571ac1a21c1
+    m_ActionName: BaseMap/Jump[/Keyboard/space]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: fe4d71af-16b4-475a-9a74-27dde363a018
+    m_ActionName: BaseMap/Camera[/XInputControllerWindows/leftStick,/Mouse/delta]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: f4476375-e6c9-40d8-ac8d-f572479a7cc9
+    m_ActionName: BaseMap/MainInteraction[/Mouse/leftButton]
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: MouseKeyboard
+  m_DefaultActionMap: BaseMap
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}
 --- !u!1 &1471236171
 GameObject:
   m_ObjectHideFlags: 0
@@ -776,8 +843,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eeb1a09225383b340827e99e9b57094d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ControllerSettings: {fileID: 11400000, guid: 9073358086e01e54f9e6bf7bbf96eaef, type: 2}
-  PlayerSettings: {fileID: 11400000, guid: 3d8162f9153ed4646a278f7819b351d1, type: 2}
 --- !u!4 &2102311749
 Transform:
   m_ObjectHideFlags: 0

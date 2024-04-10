@@ -4,31 +4,30 @@ using CustomException;
 namespace Settings
 {
     /// <summary>
-    /// Singleton class to make accessible all the settings easly. MUST be in each scene.
+    /// Singleton class to make accessible all the settings easly. Each scene MUST have a UNIQUE SettingsManager.
     /// </summary>
     public class SettingsManager : MonoBehaviour
     {
-        public static SettingsManager Instance;
         private static SettingsManager instance;
-        public  ControllerSettings ControllerSettings;
-        public PlayerBodySettings PlayerSettings;
-
-        public void Awake()
+        public static SettingsManager Instance
         {
-            if (Instance == null)
+            get
             {
-                Instance = this;
+                if (instance == null) throw (new SettingsManagerException("No Settings Manager Detected"));
+                return instance;  
+            }
+        }
+
+        public void Start()
+        {
+            if (instance == null)
+            {
+                instance = this;
             }
             else
             {
                 throw (new SettingsManagerException("Multiple Settings Manager Detected"));
             }
         }
-
-        public static void testc(ControllerSettings aaa)
-        {
-
-        }
-        
     }
 }

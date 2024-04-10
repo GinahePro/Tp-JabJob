@@ -13,13 +13,18 @@ namespace Player
         {
             Vector3 movementForce = Vector3.zero;
             // Debug.Log(_context.rb.velocity.magnitude);
-            movementForce += _context.controller.WantedMovement.y * _context.playerTransform.forward;
-            movementForce += _context.controller.WantedMovement.x * _context.playerTransform.right;
+            //movementForce += _context.controller.WantedMovement.y * _context.playerTransform.forward;
+            //movementForce += _context.controller.WantedMovement.x * _context.playerTransform.right;
 
 
             //_context.rb.AddForce(movementForce, ForceMode.Force);
-            _context.playerTransform.rotation = _context.controller.HorizontalCameraRotation;
-            _context.cameraVerticalRotationPoint.localRotation = _context.controller.VerticalCameraRotation;
+            _context.playerTransform.Rotate(0,_context.controller.WantedLookMovement.x, 0);
+
+            _context.verticalRotationAngle -= _context.controller.WantedLookMovement.y;
+
+            if (_context.verticalRotationAngle > 70) _context.verticalRotationAngle = 70 ;
+            if (_context.verticalRotationAngle < - 70) _context.verticalRotationAngle = -70;
+            _context.cameraVerticalRotationPoint.localRotation = Quaternion.Euler(_context.verticalRotationAngle, 0 , 0) ;
         }
 
         public override void OnEnter()

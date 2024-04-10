@@ -1,84 +1,60 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
-using Settings;
 using UnityEngine.Events;
+using Settings;
+using DesignPattern.Singleton;
+using System.Linq;
+using Unity.Plastic.Newtonsoft.Json.Bson;
+using Unity.VisualScripting.YamlDotNet.Core.Tokens;
 
 namespace Player
 {
-    public class PlayerController
+    [RequireComponent(typeof(PlayerInput))]
+    public class PlayerController : Singleton<PlayerController>
     {
-        private static PlayerController instance;
-        public static PlayerController Instance
-        {
-            get
-            {
-                if (instance == null)
-                {
-                    new PlayerController(SettingsManager.Instance.ControllerSettings);
-                }
-                return instance;
-            }
-
-        }
-
+        [SerializeField]
         ControllerSettings controlerSettings;
-        PlayerInput playerInput = null;
+
+        string currentControlScheme;
 
         public Vector2 WantedMovement = new();
-        public Quaternion HorizontalCameraRotation
-        {
-            get
-            {
-                return Quaternion.Euler(0, horizontalCameraRotationAngle, 0);
-            }
-        }
-        float horizontalCameraRotationAngle;
-        public Quaternion VerticalCameraRotation
-        {
-            get
-            {
-                return Quaternion.Euler(verticalCameraRotationAngle, 0, 0);
-            }
-        }
-        float verticalCameraRotationAngle;
+        public Vector2 WantedLookMovement = new();
 
         public UnityEvent Jump;
-
-        public PlayerController(ControllerSettings controlerSettings)
+        private void Start()
         {
-            instance = this;
-            this.controlerSettings = controlerSettings;
-            playerInput = new PlayerInput();
-            playerInput.BaseMap.Enable();
 
-            playerInput.BaseMap.Movement.started += SetWantedMovement;
-            playerInput.BaseMap.Movement.performed += SetWantedMovement;
-            playerInput.BaseMap.Movement.canceled += SetWantedMovement;
-
-            playerInput.BaseMap.CameraHorizontal.performed += SetHorizontalCameraRotation;
-            playerInput.BaseMap.CameraVertical.performed += SetVerticalCameraRotation;
-
-            playerInput.BaseMap.Jump.started += InvokeJump;
         }
 
-        void SetWantedMovement(InputAction.CallbackContext context)
+        void Update()
         {
-            WantedMovement = context.ReadValue<Vector2>();
-        }
-        void SetVerticalCameraRotation(InputAction.CallbackContext context)
-        {
-            verticalCameraRotationAngle -= context.ReadValue<float>() * controlerSettings.verticalCameraSensitivity;
-            verticalCameraRotationAngle = Mathf.Max(verticalCameraRotationAngle, -70);
-            verticalCameraRotationAngle = Mathf.Min(verticalCameraRotationAngle, 70);
-        }
-        void SetHorizontalCameraRotation(InputAction.CallbackContext context)
-        {
-            horizontalCameraRotationAngle += context.ReadValue<float>() * controlerSettings.horizontalCameraSensitivity;
-            if (horizontalCameraRotationAngle > 360) horizontalCameraRotationAngle -= 360;
-            if (horizontalCameraRotationAngle < 0) horizontalCameraRotationAngle += 360;
+            
         }
 
-        void InvokeJump(InputAction.CallbackContext context)
+        void OnControlsChanged(PlayerInput playerInput)
+        {
+            currentControlScheme = playerInput.currentControlScheme;
+        }
+
+        void OnMovement(InputValue value)
+        {
+            WantedMovement = value.Get<Vector2>();
+        }
+        void OnCamera(InputValue value)
+        {
+            WantedLookMovement = value.Get<Vector2>();
+            if (WantedLookMovement.magnitude < 0.1f)
+            {
+                WantedLookMovement = Vector2.zero;
+            }
+            WantedLookMovement.x *= controlerSettings.horizontalCameraSensitivity;
+            WantedLookMovement.y *= controlerSettings.verticalCameraSensitivity;
+        }
+        void OnMainInteraction(InputValue value)
+        {
+
+        }
+        void OnJump(InputValue value)
         {
             Jump.Invoke();
         }

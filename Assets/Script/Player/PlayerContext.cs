@@ -14,6 +14,8 @@ namespace Player
         public Rigidbody rb;
         public UnityEvent onGround;
 
+        public float verticalRotationAngle;
+
         public bool tinActivated;
         public bool pewterActivated;
 
@@ -28,9 +30,10 @@ namespace Player
             )
         {
             playerTransform = transform;
+            controller = transform.gameObject.GetComponent<PlayerController>();
             this.cameraVerticalRotationPoint = cameraVerticalRotationPoint;
             this.rb = rb;
-            controller = PlayerController.Instance;
+
         }
     }
 }

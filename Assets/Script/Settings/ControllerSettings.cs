@@ -8,8 +8,9 @@ namespace Settings
     [CreateAssetMenu(fileName = "NewControllerSettings", menuName = "Settings/ControllerSettings")]
     public class ControllerSettings : ScriptableObject
     {
-        public float horizontalCameraSensitivity;
-        public float verticalCameraSensitivity;
+        public float anglePerPoint = 1 / 360;
+        public float horizontalCameraSensitivity = 1;
+        public float verticalCameraSensitivity = 1;
     }
 }
 

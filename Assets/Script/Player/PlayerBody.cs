@@ -3,6 +3,7 @@ using DesignPattern.BaseStateMachine;
 
 namespace Player
 {
+    [RequireComponent(typeof(PlayerController))]
     public class PlayerBody : MonoBehaviour
     {
 

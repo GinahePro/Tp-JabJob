@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1bde04244d6d61045b6b08246743af33, type: 3}
   m_Name: ControllerSettings
   m_EditorClassIdentifier: 
+  anglePerPoint: 0.1
   horizontalCameraSensitivity: 1
   verticalCameraSensitivity: 1

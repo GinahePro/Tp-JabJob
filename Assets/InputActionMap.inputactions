@@ -1,5 +1,5 @@
 {
-    "name": "PlayerInput",
+    "name": "InputActionMap",
     "maps": [
         {
             "name": "BaseMap",
@@ -15,28 +15,10 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "Jump",
-                    "type": "Button",
-                    "id": "375f2adf-9d0b-4382-b38d-7571ac1a21c1",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "CameraVertical",
+                    "name": "Camera",
                     "type": "Value",
-                    "id": "0c8f4ed0-22ce-41ca-97d6-6f79a9291b9e",
-                    "expectedControlType": "Axis",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": true
-                },
-                {
-                    "name": "CameraHorizontal",
-                    "type": "Value",
-                    "id": "a2fea3bd-d5b0-49cb-8a2e-a4f024c60a6b",
-                    "expectedControlType": "Axis",
+                    "id": "fe4d71af-16b4-475a-9a74-27dde363a018",
+                    "expectedControlType": "Vector2",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
@@ -45,6 +27,15 @@
                     "name": "MainInteraction",
                     "type": "Button",
                     "id": "f4476375-e6c9-40d8-ac8d-f572479a7cc9",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Jump",
+                    "type": "Button",
+                    "id": "375f2adf-9d0b-4382-b38d-7571ac1a21c1",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -109,34 +100,45 @@
                 },
                 {
                     "name": "",
+                    "id": "09cc573d-94b9-474b-87d1-1b64003285e1",
+                    "path": "<Gamepad>/rightStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "Movement",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "1079df94-07d8-4634-a745-df9693374728",
                     "path": "<Keyboard>/space",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "MouseKeyboard",
                     "action": "Jump",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
-                    "id": "de840336-a552-4df7-a3ad-549e0d3acb2a",
-                    "path": "<Mouse>/delta/y",
+                    "id": "c4f1625d-4ab5-4bdb-8c9a-945dd4749e9a",
+                    "path": "<Gamepad>/leftStick",
                     "interactions": "",
-                    "processors": "",
-                    "groups": "MouseKeyboard",
-                    "action": "CameraVertical",
+                    "processors": "ScaleVector2(x=0.2,y=0.2)",
+                    "groups": "Gamepad",
+                    "action": "Camera",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
-                    "id": "1113d33b-1404-4958-b914-8b991671d87c",
-                    "path": "<Mouse>/delta/x",
+                    "id": "ef642ac0-cbe8-4b07-b5f9-51d1c1afbf90",
+                    "path": "<Mouse>/delta",
                     "interactions": "",
-                    "processors": "",
+                    "processors": "ScaleVector2(x=0.1,y=0.1)",
                     "groups": "MouseKeyboard",
-                    "action": "CameraHorizontal",
+                    "action": "Camera",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -166,6 +168,17 @@
                 },
                 {
                     "devicePath": "<Keyboard>",
+                    "isOptional": false,
+                    "isOR": false
+                }
+            ]
+        },
+        {
+            "name": "Gamepad",
+            "bindingGroup": "Gamepad",
+            "devices": [
+                {
+                    "devicePath": "<Gamepad>",
                     "isOptional": false,
                     "isOR": false
                 }
