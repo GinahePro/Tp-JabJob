@@ -32,6 +32,7 @@ namespace Player
             playerTransform = transform;
             controller = transform.gameObject.GetComponent<PlayerController>();
             this.cameraVerticalRotationPoint = cameraVerticalRotationPoint;
+            playerBodyConst = ProjectConstManager.Instance.PlayerBodyConst;
             this.rb = rb;
 
         }

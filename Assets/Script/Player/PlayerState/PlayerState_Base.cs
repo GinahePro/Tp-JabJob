@@ -1,5 +1,6 @@
 using UnityEngine;
 using DesignPattern.BaseStateMachine;
+using GameConst;
 
 namespace Player
 {
@@ -19,13 +20,13 @@ namespace Player
 
             //_context.rb.AddForce(movementForce, ForceMode.Force);
             _context.playerTransform.Rotate(0,_context.controller.WantedLookMovement.x, 0);
+            
 
             _context.verticalRotationAngle -= _context.controller.WantedLookMovement.y;
-
-            if (_context.verticalRotationAngle > 70) _context.verticalRotationAngle = 70 ;
-            if (_context.verticalRotationAngle < - 70) _context.verticalRotationAngle = -70;
+            _context.verticalRotationAngle = Mathf.Clamp(_context.verticalRotationAngle, _context.playerBodyConst.ClampAngleLookingDown, _context.playerBodyConst.ClampAngleLookingUp);
             _context.cameraVerticalRotationPoint.localRotation = Quaternion.Euler(_context.verticalRotationAngle, 0 , 0) ;
         }
+        
 
         public override void OnEnter()
         {

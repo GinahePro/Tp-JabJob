@@ -9,12 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a1cb5cc6931874448103dc8ab09694a, type: 3}
-  m_Name: PB Base Config
+  m_Script: {fileID: 11500000, guid: 1bde04244d6d61045b6b08246743af33, type: 3}
+  m_Name: Controller Base Config
   m_EditorClassIdentifier: 
-  groundDrag: 0
-  groundMovementPower: 0
-  groundMaxSpeed: 0
-  airDrag: 0
-  airMovementPower: 0
-  airMaxSpeed: 0

@@ -9,8 +9,6 @@ namespace Player
     [RequireComponent(typeof(PlayerInput))]
     public class PlayerController : Singleton<PlayerController>
     {
-        [SerializeField]
-        PlayerControllerConst controlerSettings;
 
         string currentControlScheme;
 
